@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --size: 150px;
+      }
+      body {
+        background-color: rgb(20, 180, 243);
+      }
+      .ball {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        visibility: hidden;
+        visibility: visible;
+      }
+      .ground {
+        background-color: rgb(15, 70, 3);
+        position: absolute;
+        bottom: 0;
+        height: 30vh;
+        width: 100%;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <div class="ground"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+    <script>
+      gsap.set("div", { visibility: "visible" });
+      gsap.fromTo(
+        ".ball",
+        {
+          backgroundColor: "rgb(228, 243, 12)",
+          boxShadow: "0 0 20px rgb(228, 243, 12)",
+          x: 100,
+        },
+        {
+          backgroundColor: "rgb(228, 91, 13)",
+          boxShadow: "0 0 20px rgb(228, 91, 13)",
+          x: 1300,
+          repeat: -1,
+          duration: 5,
+        }
+      );
+      gsap.to(".ball", {
+        y: -500,
+        repeat: -1,
+        ease: "circ.out",
+        yoyo: true,
+        duration: 2.5,
+      });
+    </script>
+  </body>
+</html>
